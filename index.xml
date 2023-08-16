@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>antecanis8&#39;s blog</title>
+    <link>https://antecanis8.github.io/</link>
+    <description>Recent content on antecanis8&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 04 Apr 2023 23:36:31 +0800</lastBuildDate><atom:link href="https://antecanis8.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>String</title>
+      <link>https://antecanis8.github.io/posts/string/</link>
+      <pubDate>Tue, 04 Apr 2023 23:36:31 +0800</pubDate>
+      
+      <guid>https://antecanis8.github.io/posts/string/</guid>
+      <description>构造函数 构造函数 描述 string g1(&amp;ldquo;abd sdgg&amp;rdquo;) 双引号内是C风格字符串 string g2(&amp;lsquo;h&amp;rsquo;,20) 将20个h组成的字符串赋给g2 string g3(g2) 将g2复制给g3 string g4(g2,10) 将g2的前10个字符赋给g4 char r[10]=&amp;ldquo;abcdefg&amp;rdquo;string g5(r+2,r+5) g5内为&amp;quot;cde&amp;quot;，r+2类似指针，表示从r[2]开始，不包括r[5]， 输入 string g; cin&amp;gt;&amp;gt;g;//不能读取空格 getline(cin,g);//可以读取空格 输出 string g(&amp;#34;abc defg&amp;#34;); cout&amp;lt;&amp;lt;g; printf(&amp;#34;%s&amp;#34;,&amp;amp;g[0]); printf(&amp;#34;%s&amp;#34;,g.c_str()); 为什么%s不能直接输出string，因为printf输出字符串是针对char *的，换言之，printf只能输出C语言中的内置数据，string不是c语言内置数据。
+更深入的来说：s这个string类型的对象并非单单只有字符串，其内还有许多用于操作的函数，于是&amp;amp;s并非字符串“中国”的首地址，而是s这个对象的首地址。
+所以，用%s输出string时，要取g[0]的地址，或者用c_str()函数，把string转换成C类型字符串（后面有讲）。
+容量操作 函数名称 功能说明 size_t size() const 返回字符串有效字符长度 size_t length() const 返回字符串有效字符长度 size_t capacity() const 返回为string分配的空间总大小 bool empty() const 检测字符串是否为空串，是返回true，否则返回false void clear() 清空有效字符 void resize( size_t n, char c ) 将有效字符的个数该成n个，多出的空间用字符c填充 void resize ( size_t n ) 将有效字符的个数改成n个，多出的空间用0填充 void reserve ( size_t res_arg=0 ) 为字符串预留空间 size_t类型表示C中任何对象所能达到的最大长度，它是无符号整数。</description>
+    </item>
+    
+    <item>
+      <title>Stack</title>
+      <link>https://antecanis8.github.io/posts/stack/</link>
+      <pubDate>Tue, 04 Apr 2023 23:35:25 +0800</pubDate>
+      
+      <guid>https://antecanis8.github.io/posts/stack/</guid>
+      <description>构造函数 stack&amp;lt;int&amp;gt; s; stack&amp;lt;string&amp;gt; s; 容量操作 函数名称 功能说明 void push (const value_type&amp;amp; val); 将val入栈 void pop(); 移除栈顶元素 value_type&amp;amp; top();const value_type&amp;amp; top() const; 取得栈顶元素 bool empty() const; 检测栈内是否为空，空为真 size_type size() const; 返回栈内元素的个数 void swap (stack&amp;amp; x); 交换两个栈的元素 遍历方法 栈只能对栈顶元素进行操作，如果想要进行遍历，只能将栈中元素一个个取出来存在数组中</description>
+    </item>
+    
+    <item>
+      <title>Vector</title>
+      <link>https://antecanis8.github.io/posts/vector/</link>
+      <pubDate>Tue, 04 Apr 2023 23:35:18 +0800</pubDate>
+      
+      <guid>https://antecanis8.github.io/posts/vector/</guid>
+      <description>构造函数 构造函数声明 接口说明 vector() 无参构造 vector( size_type n, const t&amp;amp; t ) 构造并初始化n个val，即将前n个变量初始化为t vector(const vector&amp;amp; x); 拷贝构造 vector (begin,end); 复制[begin,end)区间（左边包含，右边不包含）内某一个数组或vector的元素到vector中 vector&amp;lt;int&amp;gt; vec1(10,5);//前十个变量为5 vector&amp;lt;int&amp;gt; vec2(vec1); int a[5]={1,2,3,4,5}; vector&amp;lt;int&amp;gt; vec3(a,a+5);//将a数组的元素（从a[0]到a[4]，即左边包含右边不包含）用来初始化vector向量 vector&amp;lt;int&amp;gt; vec4(vec1.begin(),vec1.begin()+5);//将vec1的元素（从vec1[0]到vec1[4]）用来初始化vector向量 vector&amp;lt;int&amp;gt; vec5(&amp;amp;a[1],&amp;amp;a[4]);//将a[1]-a[3]范围内的元素用来初始化vector向量 容量操作 函数名称 功能说明 size_t size() const; 返回vec中元素的个数 size_t capacity() const 返回为vec分配的空间总大小 bool empty() const; 检测vec是否为空，是返回true，否则返回false void clear(); 清空vec中所有元素 void push_back (const value_type&amp;amp; val); 在vec的最后一个向量后插入一个元素，其值为val，当且仅当插入前的size()==capacity()时，才会扩充空间 void pop_back(); 删除vec的最后一个元素 void assign (size_t n, const value_type&amp;amp; val); 将vec替换成n个val，注意是替换，不是在末尾添加 template void assign (InputIterator first, InputIterator last); 将[first,last)区间内的某个数组或vector的元素赋给vec iterator erase (iterator position); 删除position位置的元素，例如vec.</description>
+    </item>
+    
+    <item>
+      <title>工作周报1</title>
+      <link>https://antecanis8.github.io/posts/week1/</link>
+      <pubDate>Tue, 04 Apr 2023 23:35:07 +0800</pubDate>
+      
+      <guid>https://antecanis8.github.io/posts/week1/</guid>
+      <description>工作周报 报告人：杨奕驰
+报告日期：2023-04-02
+本周主要工作 学习c++ STL的用法 具体完成情况 日期 内容及说明 完成情况及存在的问题 自己估计的工作时间（小时） 2023-03-30 通过c++ primer plus学习string的用法 完成 4 2023-04-01 学习string的用法，和vector的用法以及遍历方法 完成 3 2023-04-02 学习vector，stack，map的用法以及遍历方法 完成 7 小计 14 及未完成工作 map没有做笔记 还需要多写程序来巩固 下周工作 序号 内容 说明 1 C++ OOP 学习 掌握面向对象的四大特性：抽象继承封装多态，理解特性之间的关系与实现方式 2 计算机教育中缺失的一课 前三天的课程 </description>
+    </item>
+    
+    <item>
+      <title>Typedef_struct</title>
+      <link>https://antecanis8.github.io/posts/typedef_struct/</link>
+      <pubDate>Sat, 01 Apr 2023 19:53:01 +0800</pubDate>
+      
+      <guid>https://antecanis8.github.io/posts/typedef_struct/</guid>
+      <description>typedef struct 我们都知道，typedef可以为现有的类型创建别名，定义易于记忆的类型名，例如
+typedef long byte_4 但是，typedef在和struct一起使用的时候，具体的过程是怎么样的呢
+typedef struct tagMyStruct{ int a,b; }mystruct,*link; 这里实际上完成了两个操作，首先定义了一个结构体
+struct tagMyStruct{ int a,b; }; 分析：tagMyStruct称为“tag”，即“标签”，实际上是一个临时名字，struct和tagMyStruct一起，构成了这个结构类型，不论是否有typedef，这个结构都存在。 我们可以用struct tagMyStruct varName来定义变量，但要注意，使用tagMyStruct varName来定义变量是不对的，因为struct 和tagMyStruct合在一起才能表示一个结构类型。
+然后，typedef为这个新的结构起了一个名字，叫MyStruct
+typedef struct tagMyStruct MyStruct 分析：MyStruct实际上相当于struct tagMyStruct，我们可以使用MyStruct varName来定义变量。
+完整的例子
+typedef struct tagMyStruct{ int a,b; }mystruct,*link; int main() { struct tagMyStruct x; x.a=1; x.b=2; mystruct y; y.a=3; y.b=4; link z=&amp;amp;y;//这个link在上面定义的时候是指针类型，所以这里直接定义一个指针z z-&amp;gt;a=5; z-&amp;gt;b=6; printf(&amp;#34;%d %d\n&amp;#34;,z-&amp;gt;a,z-&amp;gt;b); link *p=&amp;amp;z;//这里是定义一个指针指针,p的值为指针z的地址，所以*p==z成立，(*(*p))==y成立 // (*p)-&amp;gt;a=7; (*p)-&amp;gt;b=8; (*(*p)).a=7; (*(*p)).a=8;//这两句话等价 printf(&amp;#34;%d %d\n&amp;#34;,(*p)-&amp;gt;a,(*p)-&amp;gt;b); return 0; } </description>
+    </item>
+    
+    <item>
+      <title>How to Build Blog</title>
+      <link>https://antecanis8.github.io/posts/how-to-build-blog/</link>
+      <pubDate>Tue, 07 Mar 2023 21:12:48 +0800</pubDate>
+      
+      <guid>https://antecanis8.github.io/posts/how-to-build-blog/</guid>
+      <description>如何搭建一个基于Hugo和Github Page的博客 要求：1、在电脑上安装git。2、注册一个Github账号
+简明git使用教程
+1.安装hugo 首先，我默认大家使用的都是Windows系统，以下内容都只针对Windows系统。
+在Hugo Release下载Windows版的hugo extended压缩包，例如hugo_extended_0.111.2_windows-amd64.zip
+题外话，这里出现的amd64和arm64是什么意思呢
+解答：这是CPU架构的名字，具体来讲，常见的电脑CPU（比如Intel的CORE系列）都是amd64架构，常见的手机CPU（比如高通晓龙，联发科天玑）都是arm64架构。极少数使用windows平板电脑使用arm64架构芯片
+在Git Bash中使用$uname -a$命令，如果输出中有关键词 aarch64 就是 arm64 架构，有关键词 x86_64 就是 amd64 架构
+然后，将压缩包中的hugo.exe、LICENSE和README.md提取到一个非中文路径的文件夹中，为了方便说明，我这里假设为D:\hugo\bin。接着，将此文件夹添加到系统的环境变量中。
+右键单击「开始」按钮 单击「系统」 单击左侧的「高级系统设置」 单击底部的「环境变量…」按钮 在「系统变量」部分中找到Path 双击「Path」 单击「新建…」按钮 键入D:\hugo\bin，完成输入后按「回车」 在每个窗口中单击「确定」退出 测试是否安装成功：在Git Bash中输入如下命令
+hugo version 如果输出
+hugo v0.111.2等等 则安装成功
+2.创建博客 首先设置一个博客的根目录，我选择D:\blog，然后在D盘根目录使用Git Bash
+hugo new site blog 打开blog文件夹，使用Git Bash，完成git的初始化
+git init 订阅你喜欢的主题到本地，例如我使用的主题——paper
+git submodule add https://github.com/nanxiaobei/hugo-paper themes/paper Hugo 主题商店地址: Hugo 官方主题商店、Hugo 中文主题商店。
+打开D:\blog下的config.toml文件，将
+theme = &amp;#34;&amp;#34; 改成
+theme = &amp;#34;paper&amp;#34; paper即为你选择的主题名称</description>
+    </item>
+    
+    <item>
+      <title>字符串的读写</title>
+      <link>https://antecanis8.github.io/posts/zifuchuan-duxie/</link>
+      <pubDate>Mon, 06 Mar 2023 23:36:33 +0800</pubDate>
+      
+      <guid>https://antecanis8.github.io/posts/zifuchuan-duxie/</guid>
+      <description>c++字符串笔记 c风格字符串 字符串以空字符结尾，写作&amp;rsquo;\0&amp;rsquo;，ASCLL码为0
+char yess[5]={&amp;#39;y&amp;#39;,&amp;#39;e&amp;#39;,&amp;#39;s&amp;#39;,&amp;#39;s&amp;#39;,&amp;#39;\0&amp;#39;}; char notes[5]={&amp;#39;n&amp;#39;,&amp;#39;o&amp;#39;,&amp;#39;t&amp;#39;,&amp;#39;e&amp;#39;,&amp;#39;s&amp;#39;}; 上面定义的两个char字符组中，只有第一个是字符串。在很多对字符串进行处理的函数中，例如使用cout输出字符串，判断字符串结尾的标志都是&amp;rsquo;\0&amp;rsquo;，如果用cout输出noteg数组，则不会在输出&amp;rsquo;noteg&amp;rsquo;后停止，而是会一直输出内存中notes之后的内容，直到遇见&amp;rsquo;\0&amp;rsquo;。</description>
+    </item>
+    
+    <item>
+      <title>My First Post</title>
+      <link>https://antecanis8.github.io/posts/my-first-post/</link>
+      <pubDate>Mon, 06 Mar 2023 23:31:57 +0800</pubDate>
+      
+      <guid>https://antecanis8.github.io/posts/my-first-post/</guid>
+      <description>hello world!
+废了好大劲，终于把博客搭起来了。
+后面的目标是，写一篇搭建博客的教程和我遇到的问题，以及尝试一下用CDN加速。</description>
+    </item>
+    
+  </channel>
+</rss>
